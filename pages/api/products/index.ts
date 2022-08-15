@@ -1,27 +1,22 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from "next";
 
-import data from '../../../src/data/data.json';
+import data from "../../../src/data/data.json";
 
-
-export default function handler(
-  _req: NextApiRequest,
-  res: NextApiResponse
-) {
-
+export default function handler(_req: NextApiRequest, res: NextApiResponse) {
   const newData = {
     products: data.map(({ name, id, image, price: { full, currency } }) => {
       return {
-        name, 
+        name,
         id,
-        image, 
+        image,
         price: {
           full,
-          currency
+          currency,
         },
-      }
-    })
-  }
+      };
+    }),
+  };
 
-  res.status(200).json(newData.products)
+  res.status(200).json(newData.products);
 }

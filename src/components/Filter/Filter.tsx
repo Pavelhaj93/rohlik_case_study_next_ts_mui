@@ -1,12 +1,39 @@
-import { TextField } from "@mui/material";
-import React from "react";
+import { Box, InputAdornment, TextField } from "@mui/material";
+import React, { ChangeEvent, useContext, useEffect } from "react";
+import SearchIcon from "@mui/icons-material/Search";
 
-function Filter() {
+import { GlobalContext } from "../../context/GlobalContext";
+
+type InputEvent = ChangeEvent<HTMLInputElement>;
+
+const Filter: React.FC = () => {
+  const { searchTerm, setSearchTerm } = useContext(GlobalContext);
+
+  useEffect(() => {
+    console.log(searchTerm);
+  }, [searchTerm]);
+
   return (
     <>
-      <TextField fullWidth label="fullWidth" id="fullWidth" />
+      <Box>
+        <TextField
+          placeholder="Hledat produkt"
+          id="SearchField"
+          sx={{ width: "500px" }}
+          onChange={(e: InputEvent) =>
+            setSearchTerm(e.target.value.toLowerCase())
+          }
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+      </Box>
     </>
   );
-}
+};
 
 export default Filter;

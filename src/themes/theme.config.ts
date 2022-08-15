@@ -1,13 +1,20 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#6DA305',
-      dark: '#416103'
+      main: "#6DA305",
+      dark: "#416103",
     },
     secondary: {
-      main: '#A92C3U',
+      main: "#ab0f15",
+      light: "#ffffff",
+      dark: "#000000"
+    },
+  },
+  typography: {
+    h6: {
+      fontSize: 16,
     },
   },
 });
